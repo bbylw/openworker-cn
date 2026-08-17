@@ -1,0 +1,21 @@
+{
+  "name": "openworker-cn",
+  "module": "src/main.tsx",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch server.ts",
+    "build": "bun run build.ts",
+    "start": "bun run server.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^1.16.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^7.0.2"
+  }
+}
