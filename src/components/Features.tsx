@@ -6,14 +6,11 @@ import {
   Clock8,
   ShieldAlert,
   CheckCircle2,
-  ArrowRight,
   Sparkles,
   Terminal,
   FileSpreadsheet,
   FileCode,
   Lock,
-  Calendar,
-  Send,
 } from "lucide-react";
 import { CORE_FEATURES } from "../data/content";
 
@@ -43,7 +40,7 @@ export const Features: React.FC = () => {
         <div className="section-head">
           <div className="section-eyebrow">
             <Sparkles size={14} />
-            <span>核心超能力</span>
+            <span>核心能力</span>
           </div>
           <h2 className="section-headline">不仅是聊天，而是替你交付最终成果</h2>
           <p className="section-subline">
@@ -52,63 +49,59 @@ export const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* Asymmetric Bento Grid */}
-        <div className="bento-grid">
-          {/* Bento Card 1: Real Deliverables (Large 8-col) */}
-          <div className="atelier-card bento-card bento-col-8">
+        <div className="bento reveal-stagger">
+          {/* Card 1: Real Deliverables (8-col) */}
+          <div className="card bento-card bento-col-8">
             <div>
-              <div className="bento-icon-wrapper">
-                <FileCheck2 size={26} />
+              <div className="bento-icon">
+                <FileCheck2 size={24} />
               </div>
-              <h3 className="bento-title">产出真实交付物 (Real Deliverables)</h3>
+              <h3 className="bento-title">产出真实交付物</h3>
               <p className="bento-desc">
                 生成的 Markdown 报告、结构化 Excel 电子表格、PDF 简报和网页代码都会直接以文件形式落盘至你的本地目录，即刻可用可分享。
               </p>
             </div>
 
-            {/* Interactive File Showcase Pill Grid */}
             <div
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "12px",
-                background: "var(--bg-surface-elevated)",
-                padding: "16px",
-                borderRadius: "var(--radius-md)",
-                border: "1px solid var(--border-hairline)",
+                gap: "10px",
+                background: "var(--bg-elevated)",
+                padding: "14px",
+                borderRadius: "var(--r-sm)",
+                border: "1px solid var(--border-hair)",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <FileCode size={20} color="var(--accent-mint)" />
-                <div>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)" }}>Markdown / PDF</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>打磨好的排版报告</div>
+              <div className="tool-chip" style={{ display: "flex", alignItems: "center", gap: "10px", padding: "4px 6px", borderRadius: "var(--r-xs)" }}>
+                <FileCode size={18} color="var(--amber)" style={{ flexShrink: 0 }} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--text-primary)" }}>Markdown / PDF</div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>打磨好的排版报告</div>
                 </div>
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <FileSpreadsheet size={20} color="var(--accent-cyan)" />
-                <div>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)" }}>Excel / CSV</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>多源数据透视表</div>
+              <div className="tool-chip" style={{ display: "flex", alignItems: "center", gap: "10px", padding: "4px 6px", borderRadius: "var(--r-xs)" }}>
+                <FileSpreadsheet size={18} color="var(--teal-bright)" style={{ flexShrink: 0 }} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--text-primary)" }}>Excel / CSV</div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>多源数据透视表</div>
                 </div>
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <Terminal size={20} color="var(--accent-indigo)" />
-                <div>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)" }}>Shell / 代码补丁</div>
-                  <div style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>可复现脚本指令</div>
+              <div className="tool-chip" style={{ display: "flex", alignItems: "center", gap: "10px", padding: "4px 6px", borderRadius: "var(--r-xs)" }}>
+                <Terminal size={18} color="var(--steel)" style={{ flexShrink: 0 }} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--text-primary)" }}>Shell / 代码补丁</div>
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>可复现脚本指令</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bento Card 2: Slack Integration (4-col) */}
-          <div className="atelier-card bento-card bento-col-4">
+          {/* Card 2: Slack (4-col) */}
+          <div className="card bento-card bento-col-4">
             <div>
-              <div className="bento-icon-wrapper" style={{ color: "var(--accent-cyan)", background: "var(--accent-cyan-bg)", borderColor: "var(--accent-cyan-border)" }}>
-                <MessageSquareCode size={26} />
+              <div className="bento-icon" style={{ color: "var(--teal-bright)", background: "var(--teal-bg)", borderColor: "var(--teal-border)" }}>
+                <MessageSquareCode size={24} />
               </div>
               <h3 className="bento-title">从 Slack 异步召唤</h3>
               <p className="bento-desc">
@@ -116,35 +109,33 @@ export const Features: React.FC = () => {
               </p>
             </div>
 
-            {/* Slack Mockup Snippet */}
             <div
               style={{
-                background: "var(--bg-code-box)",
-                border: "1px solid var(--border-hairline)",
-                borderRadius: "var(--radius-sm)",
-                padding: "12px 14px",
-                fontFamily: "var(--font-body)",
-                fontSize: "0.8rem",
+                background: "var(--bg-code)",
+                border: "1px solid var(--border-hair)",
+                borderRadius: "var(--r-xs)",
+                padding: "10px 12px",
+                fontSize: "0.78rem",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
-                <div style={{ width: "22px", height: "22px", borderRadius: "4px", background: "var(--accent-mint)", color: "var(--btn-mint-text)", fontWeight: 800, fontSize: "0.7rem", display: "flex", alignItems: "center", justifyContent: "center" }}>OW</div>
-                <span style={{ fontWeight: 700, color: "var(--text-code)" }}>OpenWorker Bot</span>
-                <span style={{ fontSize: "0.7rem", color: "var(--text-muted)" }}>APP · 刚刚</span>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                <div style={{ width: "20px", height: "20px", borderRadius: "3px", background: "var(--amber)", color: "var(--text-inverse)", fontWeight: 700, fontSize: "0.65rem", display: "flex", alignItems: "center", justifyContent: "center" }}>OW</div>
+                <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>OpenWorker Bot</span>
+                <span style={{ fontSize: "0.65rem", color: "var(--text-muted)" }}>· 刚刚</span>
               </div>
-              <p style={{ color: "var(--text-code)", opacity: 0.9, lineHeight: "1.45" }}>
+              <p style={{ color: "var(--text-secondary)", lineHeight: "1.45" }}>
                 已为您完成 Jira + GitHub 数据聚合，客户简报已同步生成。
               </p>
             </div>
           </div>
 
-          {/* Bento Card 3: Human in the Loop (4-col) */}
-          <div className="atelier-card bento-card bento-col-4">
+          {/* Card 3: Human-in-the-Loop (4-col) */}
+          <div className="card bento-card bento-col-4">
             <div>
-              <div className="bento-icon-wrapper" style={{ color: "var(--accent-amber)", background: "var(--accent-amber-bg)", borderColor: "var(--accent-amber-border)" }}>
-                <ShieldAlert size={26} />
+              <div className="bento-icon" style={{ color: "var(--coral)", background: "var(--coral-bg)", borderColor: "var(--coral-border)" }}>
+                <ShieldAlert size={24} />
               </div>
-              <h3 className="bento-title">行动前先询问 · 绝对可控</h3>
+              <h3 className="bento-title">行动前先询问</h3>
               <p className="bento-desc">
                 写入文件、外发消息与 Shell 命令必须经你批准。无人值守运行时会自动将敏感请求暂存至待办收件箱。
               </p>
@@ -152,125 +143,101 @@ export const Features: React.FC = () => {
 
             <div
               style={{
-                background: "var(--accent-amber-bg)",
-                border: "1px solid var(--accent-amber-border)",
-                padding: "12px 14px",
-                borderRadius: "var(--radius-sm)",
-                fontSize: "0.82rem",
+                background: "var(--coral-bg)",
+                border: "1px solid var(--coral-border)",
+                padding: "10px 12px",
+                borderRadius: "var(--r-xs)",
+                fontSize: "0.78rem",
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "8px",
               }}
             >
-              <Lock size={16} color="var(--accent-amber)" style={{ flexShrink: 0 }} />
+              <Lock size={14} color="var(--coral)" style={{ flexShrink: 0 }} />
               <span style={{ color: "var(--text-secondary)" }}>
                 关键操作弹窗把关，杜绝 AI 自主越权。
               </span>
             </div>
           </div>
 
-          {/* Bento Card 4: 25+ Tools & MCP (8-col) */}
-          <div className="atelier-card bento-card bento-col-8">
+          {/* Card 4: 25+ Tools & MCP (8-col) */}
+          <div className="card bento-card bento-col-8">
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "12px" }}>
                 <div>
-                  <div className="bento-icon-wrapper" style={{ color: "var(--accent-electric)", background: "var(--accent-electric-bg)", borderColor: "var(--accent-electric-border)" }}>
-                    <Boxes size={26} />
+                  <div className="bento-icon" style={{ color: "var(--steel)", background: "var(--steel-bg)", borderColor: "var(--steel-border)" }}>
+                    <Boxes size={24} />
                   </div>
-                  <h3 className="bento-title">使用你的日常工具 (25+ 连接器 & MCP)</h3>
+                  <h3 className="bento-title">使用你的日常工具 (25+ & MCP)</h3>
                 </div>
 
-                {/* Category filters */}
-                <div style={{ display: "flex", gap: "6px" }}>
-                  <button
-                    className={`btn ${activeToolCategory === "all" ? "btn-mint" : "btn-glass"}`}
-                    style={{ padding: "4px 10px", fontSize: "0.75rem" }}
-                    onClick={() => setActiveToolCategory("all")}
-                  >
-                    全部
-                  </button>
-                  <button
-                    className={`btn ${activeToolCategory === "dev" ? "btn-mint" : "btn-glass"}`}
-                    style={{ padding: "4px 10px", fontSize: "0.75rem" }}
-                    onClick={() => setActiveToolCategory("dev")}
-                  >
-                    研发与终端
-                  </button>
-                  <button
-                    className={`btn ${activeToolCategory === "office" ? "btn-mint" : "btn-glass"}`}
-                    style={{ padding: "4px 10px", fontSize: "0.75rem" }}
-                    onClick={() => setActiveToolCategory("office")}
-                  >
-                    办公与日程
-                  </button>
-                  <button
-                    className={`btn ${activeToolCategory === "comm" ? "btn-mint" : "btn-glass"}`}
-                    style={{ padding: "4px 10px", fontSize: "0.75rem" }}
-                    onClick={() => setActiveToolCategory("comm")}
-                  >
-                    即时通讯
-                  </button>
+                <div style={{ display: "flex", gap: "4px" }}>
+                  {[
+                    { v: "all" as const, l: "全部" },
+                    { v: "dev" as const, l: "研发" },
+                    { v: "office" as const, l: "办公" },
+                    { v: "comm" as const, l: "通讯" },
+                  ].map((f) => (
+                    <button
+                      key={f.v}
+                      className={`btn ${activeToolCategory === f.v ? "btn-amber" : "btn-ghost"}`}
+                      style={{ padding: "3px 8px", fontSize: "0.7rem" }}
+                      onClick={() => setActiveToolCategory(f.v)}
+                    >
+                      {f.l}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               <p className="bento-desc">
-                预置 GitHub、Slack、Jira、Notion、Linear、HubSpot、Outlook、Gmail、日历与本地终端连接器；任何遵循 MCP 标准的工具均可无缝接入，支持按工具细粒度授权。
+                预置 GitHub、Slack、Jira、Notion、Linear、HubSpot、Outlook、Gmail、日历与本地终端连接器；任何遵循 MCP 标准的工具均可无缝接入。
               </p>
             </div>
 
-            {/* Tools Grid Pill Matrix */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "10px",
-              }}
-            >
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
               {filteredTools.map((t, idx) => (
                 <div
                   key={idx}
+                  className="tool-chip"
                   style={{
-                    background: "var(--bg-surface-elevated)",
-                    border: "1px solid var(--border-hairline)",
-                    padding: "10px 12px",
-                    borderRadius: "var(--radius-sm)",
+                    background: "var(--bg-elevated)",
+                    border: "1px solid var(--border-hair)",
+                    padding: "8px 10px",
+                    borderRadius: "var(--r-xs)",
                     display: "flex",
                     flexDirection: "column",
                     gap: "2px",
                   }}
                 >
-                  <span style={{ fontWeight: 700, fontSize: "0.85rem", color: "var(--text-primary)" }}>
-                    {t.name}
-                  </span>
-                  <span style={{ fontSize: "0.72rem", color: "var(--text-muted)" }}>
-                    {t.desc}
-                  </span>
+                  <span style={{ fontWeight: 600, fontSize: "0.8rem", color: "var(--text-primary)" }}>{t.name}</span>
+                  <span style={{ fontSize: "0.68rem", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>{t.desc}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Bento Card 5: Scheduled Runs (12-col Full) */}
-          <div className="atelier-card bento-card bento-col-12" style={{ minHeight: "auto" }}>
+          {/* Card 5: Scheduled (12-col Full) */}
+          <div className="card bento-card bento-col-12" style={{ minHeight: "auto" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                <div className="bento-icon-wrapper" style={{ color: "var(--accent-purple)", background: "var(--accent-purple-bg)", margin: 0 }}>
-                  <Clock8 size={26} />
+                <div className="bento-icon" style={{ color: "var(--amber-bright)", margin: 0 }}>
+                  <Clock8 size={24} />
                 </div>
                 <div>
-                  <h3 className="bento-title" style={{ marginBottom: "4px" }}>按计划周期自动化 (Scheduled Workflows)</h3>
-                  <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", margin: 0 }}>
+                  <h3 className="bento-title" style={{ marginBottom: "4px" }}>按计划周期自动化</h3>
+                  <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", margin: 0 }}>
                     每日晨间简报、每周五周报自动汇总、指定 Slack 频道的持续监控 —— 运行结果带着完整操作记录沉淀在本地应用中。
                   </p>
                 </div>
               </div>
 
-              <div style={{ display: "flex", gap: "10px" }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.78rem", background: "var(--accent-mint-bg)", color: "var(--accent-mint)", border: "1px solid var(--accent-mint-border)", padding: "6px 12px", borderRadius: "var(--radius-sm)" }}>
-                  Cron 调度引擎
+              <div style={{ display: "flex", gap: "8px" }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.72rem", background: "var(--amber-bg)", color: "var(--amber-bright)", border: "1px solid var(--amber-border)", padding: "5px 10px", borderRadius: "var(--r-xs)" }}>
+                  Cron 调度
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.78rem", background: "var(--accent-cyan-bg)", color: "var(--accent-cyan)", border: "1px solid var(--accent-cyan-border)", padding: "6px 12px", borderRadius: "var(--radius-sm)" }}>
-                  全链路审计日志
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.72rem", background: "var(--teal-bg)", color: "var(--teal-bright)", border: "1px solid var(--teal-border)", padding: "5px 10px", borderRadius: "var(--r-xs)" }}>
+                  全链路审计
                 </span>
               </div>
             </div>

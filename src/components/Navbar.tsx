@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Bot, Sun, Moon, Download, Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { Bot, Sun, Moon, Download, Menu, X } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
-import { NAV_ITEMS, HERO_DATA } from "../data/content";
+import { NAV_ITEMS } from "../data/content";
 
 interface NavbarProps {
   theme: "dark" | "light";
@@ -20,33 +20,23 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on link click
+  const closeMobile = () => setMobileOpen(false);
+
   return (
-    <header className="nav-wrapper">
-      <div className="nav-bar">
+    <header className="nav-shell">
+      <div className={`nav-bar ${scrolled ? "scrolled" : ""}`}>
         {/* Brand */}
         <a href="#" className="nav-logo">
-          <div className="nav-logo-icon">
-            <Bot size={18} />
+          <div className="nav-logo-mark">
+            <Bot size={16} />
           </div>
           <span>OpenWorker</span>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.68rem",
-              padding: "2px 8px",
-              borderRadius: "999px",
-              background: "rgba(0, 245, 160, 0.12)",
-              color: "var(--accent-mint)",
-              border: "1px solid rgba(0, 245, 160, 0.3)",
-              fontWeight: 700,
-            }}
-          >
-            BETA
-          </span>
+          <span className="nav-beta-tag">BETA</span>
         </a>
 
         {/* Desktop Links */}
-        <nav className="nav-links-deck">
+        <nav className="nav-links">
           {NAV_ITEMS.map((item) => (
             <a key={item.href} href={item.href}>
               {item.label}
@@ -57,44 +47,62 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
         {/* Action Controls */}
         <div className="nav-controls">
           <button
-            className="theme-pill-btn"
+            className="theme-btn"
             onClick={toggleTheme}
             aria-label="切换明暗主题"
             title={`切换为${theme === "dark" ? "亮色" : "暗色"}模式`}
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
           </button>
 
           <a
-            href={HERO_DATA.githubUrl}
+            href="https://github.com/andrewyng/openworker"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-glass"
-            style={{ padding: "8px 14px", fontSize: "0.85rem" }}
+            className="btn btn-ghost nav-github-btn"
+            style={{ padding: "7px 12px", fontSize: "0.82rem" }}
+            title="GitHub 仓库"
           >
-            <GithubIcon size={15} />
+            <GithubIcon size={14} />
             <span>GitHub</span>
           </a>
 
           <a
             href="#download"
-            className="btn btn-mint"
-            style={{ padding: "8px 16px", fontSize: "0.85rem" }}
+            className="btn btn-amber nav-download-btn"
+            style={{ padding: "7px 14px", fontSize: "0.82rem" }}
           >
-            <Download size={15} />
-            <span>下载客户端</span>
+            <Download size={14} />
+            <span>下载</span>
           </a>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="theme-pill-btn"
-            style={{ display: "none" }}
+            className="theme-btn nav-mobile-toggle"
             aria-label="菜单"
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="nav-mobile-menu" onClick={closeMobile}>
+          <div className="nav-mobile-content" onClick={(e) => e.stopPropagation()}>
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-mobile-link"
+                onClick={closeMobile}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 };

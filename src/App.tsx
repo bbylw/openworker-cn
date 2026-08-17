@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
+import { WorkspaceShowcase } from "./components/WorkspaceShowcase";
 import { Features } from "./components/Features";
 import { Architecture } from "./components/Architecture";
 import { WorkflowSimulator } from "./components/WorkflowSimulator";
@@ -27,11 +28,12 @@ export const App: React.FC = () => {
 
   return (
     <div className="app-root">
-      {/* Dynamic Ambient Atmosphere Lights */}
-      <div className="ambient-glow-mesh">
-        <div className="ambient-orb-top" />
-        <div className="ambient-orb-mid" />
-        <div className="ambient-grid" />
+      {/* Atmospheric Background */}
+      <div className="atmosphere-layer">
+        <div className="atm-orb atm-orb-1" />
+        <div className="atm-orb atm-orb-2" />
+        <div className="atm-orb atm-orb-3" />
+        <div className="atm-grid" />
       </div>
 
       {/* Floating Pill Navigation */}
@@ -40,6 +42,7 @@ export const App: React.FC = () => {
       {/* Main Content Sections */}
       <main>
         <Hero />
+        <WorkspaceShowcase />
         <Features />
         <Architecture />
         <WorkflowSimulator />

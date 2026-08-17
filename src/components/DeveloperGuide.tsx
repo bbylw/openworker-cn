@@ -4,10 +4,8 @@ import {
   Copy,
   Check,
   FolderTree,
-  Code2,
   ExternalLink,
   Cpu,
-  Layers,
   ChevronRight,
 } from "lucide-react";
 import { DEV_GUIDE } from "../data/content";
@@ -78,135 +76,137 @@ npm run tauri dev`;
         </div>
 
         {/* Platform Selector */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "24px" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "20px" }}>
           <button
-            className={`btn ${platform === "mac" ? "btn-mint" : "btn-glass"}`}
-            style={{ padding: "8px 18px", fontSize: "0.85rem" }}
+            className={`btn ${platform === "mac" ? "btn-amber" : "btn-ghost"}`}
+            style={{ padding: "7px 16px", fontSize: "0.82rem" }}
             onClick={() => setPlatform("mac")}
           >
-            macOS / Linux 启动指南
+            macOS / Linux
           </button>
           <button
-            className={`btn ${platform === "windows" ? "btn-mint" : "btn-glass"}`}
-            style={{ padding: "8px 18px", fontSize: "0.85rem" }}
+            className={`btn ${platform === "windows" ? "btn-amber" : "btn-ghost"}`}
+            style={{ padding: "7px 16px", fontSize: "0.82rem" }}
             onClick={() => setPlatform("windows")}
           >
-            Windows (10/11) 启动指南
+            Windows (10/11)
           </button>
         </div>
 
-        {/* Terminal Shell Container */}
-        <div className="dev-terminal-shell">
-          <div className="terminal-top-bar">
+        {/* Terminal */}
+        <div className="terminal">
+          <div className="terminal-top">
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Terminal size={14} color="var(--accent-mint)" />
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--text-secondary)" }}>
+              <Terminal size={13} color="var(--amber)" />
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-muted)" }}>
                 terminal // dev-quickstart.sh
               </span>
             </div>
 
             <button
               onClick={handleCopy}
-              className="btn btn-glass"
-              style={{ padding: "4px 12px", fontSize: "0.75rem" }}
+              className="btn btn-ghost"
+              style={{ padding: "3px 10px", fontSize: "0.72rem" }}
             >
               {copied ? (
                 <>
-                  <Check size={14} color="var(--accent-mint)" />
-                  <span style={{ color: "var(--accent-mint)" }}>已复制脚本</span>
+                  <Check size={13} color="var(--teal-bright)" />
+                  <span style={{ color: "var(--teal-bright)" }}>已复制</span>
                 </>
               ) : (
                 <>
-                  <Copy size={14} />
-                  <span>一键复制代码</span>
+                  <Copy size={13} />
+                  <span>复制脚本</span>
                 </>
               )}
             </button>
           </div>
 
-          <pre className="terminal-code-body">
-            <code>{getFullScript()}</code>
+          <pre className="terminal-body">
+            <code>{getFullScript()}<span className="term-cursor" /></code>
           </pre>
         </div>
 
-        {/* Token Authentication Mechanism Notice */}
+        {/* Token Auth */}
         <div
-          className="atelier-card"
+          className="card"
           style={{
-            marginTop: "24px",
-            padding: "18px 24px",
+            marginTop: "20px",
+            padding: "16px 20px",
             display: "flex",
             alignItems: "center",
-            gap: "16px",
+            gap: "14px",
           }}
         >
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: "1.2rem", color: "var(--accent-cyan)" }}>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "1.1rem", color: "var(--amber)" }}>
             🔑
           </span>
-          <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-            <strong>本地侧车通信鉴权机制：</strong> 独立服务端启动时会在 <code style={{ color: "var(--accent-mint)", fontFamily: "var(--font-mono)" }}>&lt;state-dir&gt;/sidecar-8765.token</code> 自动生成一次性启动令牌。API 直接调用需在请求头携带 <code style={{ color: "var(--accent-mint)", fontFamily: "var(--font-mono)" }}>X-OpenWorker-Token</code>。桌面应用则使用内存临时令牌，绝不落盘。
+          <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)" }}>
+            <strong>本地侧车通信鉴权机制：</strong> 独立服务端启动时会在 <code style={{ color: "var(--amber-bright)", fontFamily: "var(--font-mono)" }}>&lt;state-dir&gt;/sidecar-8765.token</code> 自动生成一次性启动令牌。API 直接调用需在请求头携带 <code style={{ color: "var(--amber-bright)", fontFamily: "var(--font-mono)" }}>X-OpenWorker-Token</code>。桌面应用则使用内存临时令牌，绝不落盘。
           </div>
         </div>
 
-        {/* Interactive Repository Directory Tree Inspector */}
-        <div style={{ marginTop: "48px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.45rem", marginBottom: "16px", display: "flex", alignItems: "center", gap: "10px" }}>
-            <FolderTree size={22} color="var(--accent-mint)" />
-            <span>仓库目录剖析 (Repository Architecture)</span>
+        {/* Directory Tree */}
+        <div style={{ marginTop: "40px" }}>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.35rem", marginBottom: "14px", display: "flex", alignItems: "center", gap: "10px" }}>
+            <FolderTree size={20} color="var(--amber)" />
+            <span>仓库目录剖析</span>
           </h3>
 
-          <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: "16px" }}>
-            {/* Directory tabs */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: "14px" }}>
+            {/* Tabs */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
               {DEV_GUIDE.repoStructure.map((item, idx) => (
                 <div
                   key={idx}
                   onClick={() => setSelectedDirIdx(idx)}
-                  className={`task-tab-item ${selectedDirIdx === idx ? "active" : ""}`}
+                  className={`ws-task ${selectedDirIdx === idx ? "active" : ""}`}
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.85rem",
+                    fontSize: "0.82rem",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    transition: "all var(--dur-base) var(--ease-smooth)",
                   }}
                 >
                   <span>{item.dir}</span>
-                  <ChevronRight size={14} />
+                  <ChevronRight size={13} style={{ transition: "transform var(--dur-base) ease", transform: selectedDirIdx === idx ? "translateX(3px)" : "none" }} />
                 </div>
               ))}
             </div>
 
-            {/* Selected directory details */}
-            <div className="atelier-card" style={{ padding: "24px" }}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.1rem", fontWeight: 700, color: "var(--accent-mint)", marginBottom: "10px" }}>
-                📁 {DEV_GUIDE.repoStructure[selectedDirIdx].dir}
+            {/* Detail */}
+            <div className="card" style={{ padding: "20px", animation: "reveal-fade var(--dur-base) ease both" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "1rem", fontWeight: 700, color: "var(--amber-bright)", marginBottom: "8px", display: "flex", alignItems: "center", gap: "6px" }}>
+                <span>📁</span>
+                <span>{DEV_GUIDE.repoStructure[selectedDirIdx].dir}</span>
               </div>
-              <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
                 {DEV_GUIDE.repoStructure[selectedDirIdx].desc}
               </p>
             </div>
           </div>
         </div>
 
-        {/* aisuite Ecosystem Box */}
+        {/* aisuite */}
         <div
-          className="atelier-card"
+          className="card"
           style={{
-            marginTop: "32px",
-            padding: "28px",
-            background: "linear-gradient(135deg, rgba(0, 245, 160, 0.05) 0%, rgba(0, 229, 255, 0.05) 100%)",
-            border: "1px solid rgba(0, 245, 160, 0.25)",
+            marginTop: "28px",
+            padding: "24px",
+            background: "linear-gradient(135deg, var(--amber-bg) 0%, var(--teal-bg) 100%)",
+            border: "1px solid var(--amber-border)",
             display: "flex",
             alignItems: "flex-start",
-            gap: "20px",
+            gap: "18px",
           }}
         >
-          <Cpu size={32} color="var(--accent-mint)" style={{ flexShrink: 0, marginTop: "2px" }} />
+          <Cpu size={28} color="var(--amber)" style={{ flexShrink: 0, marginTop: "2px" }} />
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
-              <h4 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
+              <h4 style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem" }}>
                 基于 aisuite 深度构建
               </h4>
               <a
@@ -214,18 +214,18 @@ npm run tauri dev`;
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontSize: "0.8rem",
-                  color: "var(--accent-mint)",
+                  fontSize: "0.75rem",
+                  color: "var(--amber-bright)",
                   display: "flex",
                   alignItems: "center",
                   gap: "4px",
                 }}
               >
                 <span>查看 aisuite 项目</span>
-                <ExternalLink size={13} />
+                <ExternalLink size={12} />
               </a>
             </div>
-            <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: "1.65" }}>
+            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
               OpenWorker 的引擎基于 Andrew Ng 团队开发的 <strong>aisuite</strong> 构建。aisuite 是一个轻量级 Python 框架，提供了跨 LLM 提供商统一的补全调用标准，并内置工具集与 MCP 智能体调度。OpenWorker 最初在 aisuite 仓库内孵化，现在作为完整的开源 AI 同事桌面应用独立发展。
             </p>
           </div>
